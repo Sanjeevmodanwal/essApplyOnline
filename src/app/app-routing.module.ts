@@ -10,6 +10,14 @@ const routes: Routes = [
   {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+  },
+  {
+    path: 'apply-online',
+    loadChildren: () => import('./pages/apply-online/apply-online.module').then( m => m.ApplyOnlinePageModule)
+  },
+  {
+    path: 'apply-online-step2',
+    loadChildren: () => import('./pages/apply-online-step2/apply-online-step2.module').then( m => m.ApplyOnlineStep2PageModule)
   }
 ];
 

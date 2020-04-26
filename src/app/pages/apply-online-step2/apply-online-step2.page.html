@@ -1,0 +1,159 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Fill the details to complete process</ion-title>
+  </ion-toolbar>
+</ion-header>
+<style>
+:root {
+  --ion-safe-area-top: 20px;
+  --ion-safe-area-bottom: 22px;
+}
+</style>
+
+
+<ion-content [fullscreen]="true">
+
+<ion-list lines="full" class="ion-no-margin ion-no-padding">
+	
+	<ion-item>
+	  <ion-label>Branch <ion-text color="danger">*</ion-text></ion-label>
+	  <ion-select name="branch" [(ngModel)]="branch">
+		<ion-select-option value="Ambala">Ambala</ion-select-option>
+		<ion-select-option value="Amritsar">Amritsar</ion-select-option>
+		<ion-select-option value="Bathinda">Bathinda</ion-select-option>
+		<ion-select-option value="Chandigarh">Chandigarh</ion-select-option>
+		<ion-select-option value="Ganganagar">Ganganagar</ion-select-option>
+		<ion-select-option value="Gurdaspur">Gurdaspur</ion-select-option>
+		<ion-select-option value="Jalandhar">Jalandhar</ion-select-option>
+		<ion-select-option value="Karnal">Karnal</ion-select-option>
+		<ion-select-option value="Ludhiana">Ludhiana</ion-select-option>
+		<ion-select-option value="Moga">Moga</ion-select-option>
+		<ion-select-option value="Patiala">Patiala</ion-select-option>
+		<ion-select-option value="Rudrapur">Rudrapur</ion-select-option>
+		<ion-select-option value="Yamunanagar">Yamunanagar</ion-select-option>
+	  </ion-select>
+	</ion-item>
+	
+	<ion-item>
+	  <ion-label>Appointment Date <ion-text color="danger">*</ion-text></ion-label>
+	  <ion-select name="appointment_date" [(ngModel)]="appointment_date">
+		<ion-select-option value="2020-04-26">2020-04-26</ion-select-option>
+		<ion-select-option value="2020-04-27">2020-04-27</ion-select-option>
+		<ion-select-option value="2020-04-28">2020-04-28</ion-select-option>
+	  </ion-select>
+	</ion-item>
+	
+	<ion-item>
+	  <ion-label>Appointment Time <ion-text color="danger">*</ion-text></ion-label>
+	  <ion-select name="time_select" [(ngModel)]="time_select">
+		<ion-select-option value="09:30 - 10:00">09:30 - 10:00</ion-select-option>
+	  </ion-select>
+	</ion-item>
+	
+	<ion-item>
+	  <ion-label>Any refusal <ion-text color="danger">*</ion-text></ion-label>
+	  <ion-select name="refusals" [(ngModel)]="refusals">
+		<ion-select-option value="yes">Yes</ion-select-option>
+		<ion-select-option value="no">No</ion-select-option>
+	  </ion-select>
+	</ion-item>
+	
+	<ion-item>
+	  <ion-label>Refusal Country <ion-text color="danger">*</ion-text></ion-label>
+	  <ion-select name="refusalscountry" [(ngModel)]="refusalscountry">
+		<ion-select-option value="Australia">Australia</ion-select-option>
+		<ion-select-option value="Canada">Canada</ion-select-option>
+		<ion-select-option value="Cyprus">Cyprus</ion-select-option>
+	  </ion-select>
+	</ion-item>
+	
+	<ion-item>
+		<ion-label position="stacked">Email</ion-label>
+		<ion-input required type="text" name="semail" [(ngModel)]="semail"></ion-input>
+	</ion-item>
+	
+	<ion-item>
+		<ion-label>Please Select marital status <ion-text color="danger">*</ion-text></ion-label>
+		<ion-select name="marital_status" [(ngModel)]="marital_status">
+			<ion-select-option value="married">Married</ion-select-option>
+			<ion-select-option value="single">Single</ion-select-option>
+		</ion-select>
+	</ion-item>
+	
+	<ion-item>
+		<ion-label>Gender <ion-text color="danger">*</ion-text></ion-label>
+		<ion-select name="gender" [(ngModel)]="gender">
+			<ion-select-option value="male">Male</ion-select-option>
+			<ion-select-option value="female">Female</ion-select-option>
+		</ion-select>
+	</ion-item>
+	
+	<ion-item>
+		<ion-label>Visa Type <ion-text color="danger">*</ion-text></ion-label>
+		<ion-select name="svisa" [(ngModel)]="svisa">
+			<ion-select-option value="Student">Student</ion-select-option>
+		</ion-select>
+	</ion-item>
+	
+	<ion-item>
+	  <ion-label>Country You Want to Apply for <ion-text color="danger">*</ion-text></ion-label>
+	  <ion-select name="scountry" [(ngModel)]="scountry">
+		<ion-select-option value="Australia">Australia</ion-select-option>
+		<ion-select-option value="Canada">Canada</ion-select-option>
+		<ion-select-option value="Cyprus">Cyprus</ion-select-option>
+	  </ion-select>
+	</ion-item>
+	
+	<ion-item>
+	  <ion-label>Source <ion-text color="danger">*</ion-text></ion-label>
+	  <ion-select name="ssource" [(ngModel)]="ssource">
+		<ion-select-option value="TV Show">TV Show</ion-select-option>
+		<ion-select-option value="Newspaper">Newspaper</ion-select-option>
+		<ion-select-option value="Radio">Radio</ion-select-option>
+		<ion-select-option value="Boards">Boards</ion-select-option>
+	  </ion-select>
+	</ion-item>
+	
+	<ion-item>
+	  <ion-label>Your Last Qualification <ion-text color="danger">*</ion-text></ion-label>
+	  <ion-select name="squalification" [(ngModel)]="squalification">
+		<ion-select-option value="12th">12th</ion-select-option>
+		<ion-select-option value="Diploma">Diploma</ion-select-option>
+		<ion-select-option value="Graduation">Graduation</ion-select-option>
+		<ion-select-option value="Post Graduation">Post Graduation</ion-select-option>
+	  </ion-select>
+	</ion-item>
+	
+	<ion-item>
+	  <ion-label>Last Qualification Passing Year <ion-text color="danger">*</ion-text></ion-label>
+	  <ion-select name="spassing" [(ngModel)]="spassing">
+		<ion-select-option value="2005">2005</ion-select-option>
+		<ion-select-option value="2006">2006</ion-select-option>
+		<ion-select-option value="2007">2007</ion-select-option>
+		<ion-select-option value="2008">2008</ion-select-option>
+	  </ion-select>
+	</ion-item>
+	
+	<ion-item>
+		<ion-label position="stacked">Your Last Qualification Percentage <ion-text color="danger">*</ion-text></ion-label>
+		<ion-input required type="text" name="last_percentage" [(ngModel)]="last_percentage"></ion-input>
+	</ion-item>
+	
+	<ion-item>
+	  <ion-label>Have you done IELTS or PTE? <ion-text color="danger">*</ion-text></ion-label>
+	  <ion-select name="sielts" [(ngModel)]="sielts">
+		<ion-select-option value="Yes">Yes</ion-select-option>
+		<ion-select-option value="No">No</ion-select-option>
+		<ion-select-option value="Pursuing">Pursuing</ion-select-option>
+	  </ion-select>
+	</ion-item>
+	
+	
+	
+</ion-list>
+
+<div class="ion-padding">
+	<ion-button expand="full" class="ion-no-margin" (click)="step2query();">Submit <ion-spinner paused></ion-spinner></ion-button>
+</div>
+
+</ion-content>
