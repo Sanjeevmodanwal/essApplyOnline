@@ -52,10 +52,14 @@
 	
 	<ion-item>
 	  <ion-label>Any refusal <ion-text color="danger">*</ion-text></ion-label>
-	  <ion-select name="refusals" [(ngModel)]="refusals">
+	  <ion-select name="refusals" (ionChange)="refusal($event)">
 		<ion-select-option value="yes">Yes</ion-select-option>
 		<ion-select-option value="no">No</ion-select-option>
 	  </ion-select>
+	</ion-item>
+
+	<ion-item color="primary" *ngIf="showref">
+    <h4>Show</h4>
 	</ion-item>
 	
 	<ion-item>
