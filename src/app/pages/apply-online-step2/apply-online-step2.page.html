@@ -57,12 +57,8 @@
 		<ion-select-option value="no">No</ion-select-option>
 	  </ion-select>
 	</ion-item>
-
-	<ion-item color="primary" *ngIf="showref">
-    <h4>Show</h4>
-	</ion-item>
 	
-	<ion-item>
+	<ion-item *ngIf="showref">
 	  <ion-label>Refusal Country <ion-text color="danger">*</ion-text></ion-label>
 	  <ion-select name="refusalscountry" [(ngModel)]="refusalscountry">
 		<ion-select-option value="Australia">Australia</ion-select-option>
@@ -94,7 +90,7 @@
 	
 	<ion-item>
 		<ion-label>Visa Type <ion-text color="danger">*</ion-text></ion-label>
-		<ion-select name="svisa" [(ngModel)]="svisa">
+		<ion-select name="svisa" (ionChange)="svisa2($event)">
 			<ion-select-option value="Student">Student</ion-select-option>
 		</ion-select>
 	</ion-item>
@@ -118,7 +114,7 @@
 	  </ion-select>
 	</ion-item>
 	
-	<ion-item>
+	<ion-item *ngIf="showvisatype">
 	  <ion-label>Your Last Qualification <ion-text color="danger">*</ion-text></ion-label>
 	  <ion-select name="squalification" [(ngModel)]="squalification">
 		<ion-select-option value="12th">12th</ion-select-option>
@@ -128,7 +124,7 @@
 	  </ion-select>
 	</ion-item>
 	
-	<ion-item>
+	<ion-item *ngIf="showvisatype">
 	  <ion-label>Last Qualification Passing Year <ion-text color="danger">*</ion-text></ion-label>
 	  <ion-select name="spassing" [(ngModel)]="spassing">
 		<ion-select-option value="2005">2005</ion-select-option>
@@ -138,17 +134,75 @@
 	  </ion-select>
 	</ion-item>
 	
-	<ion-item>
+	<ion-item *ngIf="showvisatype">
 		<ion-label position="stacked">Your Last Qualification Percentage <ion-text color="danger">*</ion-text></ion-label>
 		<ion-input required type="text" name="last_percentage" [(ngModel)]="last_percentage"></ion-input>
 	</ion-item>
 	
-	<ion-item>
+	<ion-item *ngIf="showvisatype">
 	  <ion-label>Have you done IELTS or PTE? <ion-text color="danger">*</ion-text></ion-label>
-	  <ion-select name="sielts" [(ngModel)]="sielts">
+	  <ion-select name="sielts" (ionChange)="sielts2($event)">
 		<ion-select-option value="Yes">Yes</ion-select-option>
 		<ion-select-option value="No">No</ion-select-option>
 		<ion-select-option value="Pursuing">Pursuing</ion-select-option>
+	  </ion-select>
+	</ion-item>
+<!---Yes----->		
+	<ion-item *ngIf="showstest">
+	  <ion-label>Test Type <ion-text color="danger">*</ion-text></ion-label>
+	  <ion-select name="stest" (ionChange)="stest2($event)">
+		<ion-select-option value="ielts">IELTS</ion-select-option>
+		<ion-select-option value="pte">PTE</ion-select-option>
+	  </ion-select>
+	</ion-item>
+<!---Yes/ielts----->	
+	<ion-item *ngIf="yesIelts">
+	  <ion-label>IELTS Overall Band <ion-text color="danger">*</ion-text></ion-label>
+	  <ion-select name="sieltsband" [(ngModel)]="sieltsband">
+		<ion-select-option value="4">4</ion-select-option>
+		<ion-select-option value="4.5">4.5</ion-select-option>
+		<ion-select-option value="5">5</ion-select-option>
+		<ion-select-option value="5.5">5.5</ion-select-option>
+	  </ion-select>
+	</ion-item>
+	
+	<ion-item *ngIf="yesIelts">
+	  <ion-label>IELTS Not Less than <ion-text color="danger">*</ion-text></ion-label>
+	  <ion-select name="sieltsbandnot" [(ngModel)]="sieltsbandnot">
+		<ion-select-option value="4">4</ion-select-option>
+		<ion-select-option value="4.5">4.5</ion-select-option>
+		<ion-select-option value="5">5</ion-select-option>
+		<ion-select-option value="5.5">5.5</ion-select-option>
+	  </ion-select>
+	</ion-item>
+	
+<!---Yes/PTE----->	
+	<ion-item *ngIf="yesPte">
+	  <ion-label>PTE Overall Score <ion-text color="danger">*</ion-text></ion-label>
+	  <ion-select name="spteband" [(ngModel)]="spteband">
+		<ion-select-option value="less30">Less than 30</ion-select-option>
+		<ion-select-option value="30-36">30-36</ion-select-option>
+		<ion-select-option value="36-41">36-41</ion-select-option>
+		<ion-select-option value="42-49">42-49</ion-select-option>
+	  </ion-select>
+	</ion-item>
+	
+	<ion-item *ngIf="yesPte">
+	  <ion-label>PTE Not Less than <ion-text color="danger">*</ion-text></ion-label>
+	  <ion-select name="sptebandnot" [(ngModel)]="sptebandnot">
+		<ion-select-option value="less30">Less than 30</ion-select-option>
+		<ion-select-option value="30-36">30-36</ion-select-option>
+		<ion-select-option value="36-41">36-41</ion-select-option>
+		<ion-select-option value="42-49">42-49</ion-select-option>
+	  </ion-select>
+	</ion-item>	
+
+<!---Pursuing----->	
+	<ion-item *ngIf="showp_stest">
+	  <ion-label>Test Type <ion-text color="danger">*</ion-text></ion-label>
+	  <ion-select name="p_stest" [(ngModel)]="p_stest">
+		<ion-select-option value="ielts">IELTS</ion-select-option>
+		<ion-select-option value="pte">PTE</ion-select-option>
 	  </ion-select>
 	</ion-item>
 	

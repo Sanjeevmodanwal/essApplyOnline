@@ -53,20 +53,21 @@ export class ApplyOnlinePage implements OnInit {
   
   
   step1query() {
-    this.router.navigate(['/apply-online-step2',{"id":1,"name":"anshu"}]);
-    console.log("me");
-    // this.presentLoadingWithOptions();
-    // let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), };   
-    // this.http.post(this.api, { "sname": this.sname, "smobile": this.smobile, "scity": this.scity }, httpOptions).subscribe((data: any) => {
-    //   // console.log(data);
-    //   if (data['0']['checkRslt'] == 500) {
-		//   let msg='Please Complete All Fields';
-		//   this.Step1Alert(msg);
-    //   } else {
-		// this.loadingController.dismiss('apply-online');  
-    //     this.router.navigate(['/folder/Inbox']);
-    //   }
-    // });
+    // this.router.navigate(['/apply-online-step2',{"id":1,"name":"anshu"}]);
+    // console.log("me");
+    this.presentLoadingWithOptions();
+    let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), };   
+    this.http.post(this.api, { "sname": this.sname, "smobile": this.smobile, "scity": this.scity }, httpOptions).subscribe((data: any) => {
+      // console.log(data);
+      if (data['0']['checkRslt'] == 500) {
+		  let msg='Please Complete All Fields';
+		  this.Step1Alert(msg);
+      } else {
+		let snoid = data['0']['checkRslt'];
+		this.loadingController.dismiss('apply-online');  
+        this.router.navigate(['/apply-online-step2',{"snoid":snoid}]);
+      }
+    });
   }
 
 }
