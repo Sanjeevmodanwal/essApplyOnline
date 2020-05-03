@@ -17,7 +17,7 @@
 	
 	<ion-item>
 	  <ion-label>Branch <ion-text color="danger">*</ion-text></ion-label>
-	  <ion-select name="branch" [(ngModel)]="branch">
+	  <ion-select name="branch_name" [(ngModel)]="branch_name">
 		<ion-select-option value="Ambala">Ambala</ion-select-option>
 		<ion-select-option value="Amritsar">Amritsar</ion-select-option>
 		<ion-select-option value="Bathinda">Bathinda</ion-select-option>
@@ -36,10 +36,8 @@
 	
 	<ion-item>
 	  <ion-label>Appointment Date <ion-text color="danger">*</ion-text></ion-label>
-	  <ion-select name="appointment_date" [(ngModel)]="appointment_date">
-		<ion-select-option value="2020-04-26">2020-04-26</ion-select-option>
-		<ion-select-option value="2020-04-27">2020-04-27</ion-select-option>
-		<ion-select-option value="2020-04-28">2020-04-28</ion-select-option>
+	  <ion-select name="appointment_date" [(ngModel)]="appointment_date" (ionChange)="dateAppointment($event)">
+		<ion-select-option *ngFor="let item_date of items_date" value="{{item_date.from_date}}">{{item_date.from_date}}</ion-select-option>
 	  </ion-select>
 	</ion-item>
 	
@@ -52,7 +50,7 @@
 	
 	<ion-item>
 	  <ion-label>Any refusal <ion-text color="danger">*</ion-text></ion-label>
-	  <ion-select name="refusals" (ionChange)="refusal($event)">
+	  <ion-select name="refusals" [(ngModel)]="refusals" (ionChange)="refusal($event)">
 		<ion-select-option value="yes">Yes</ion-select-option>
 		<ion-select-option value="no">No</ion-select-option>
 	  </ion-select>
@@ -90,7 +88,7 @@
 	
 	<ion-item>
 		<ion-label>Visa Type <ion-text color="danger">*</ion-text></ion-label>
-		<ion-select name="svisa" (ionChange)="svisa2($event)">
+		<ion-select name="svisa" [(ngModel)]="svisa" (ionChange)="svisa2($event)">
 			<ion-select-option value="Student">Student</ion-select-option>
 		</ion-select>
 	</ion-item>
@@ -141,7 +139,7 @@
 	
 	<ion-item *ngIf="showvisatype">
 	  <ion-label>Have you done IELTS or PTE? <ion-text color="danger">*</ion-text></ion-label>
-	  <ion-select name="sielts" (ionChange)="sielts2($event)">
+	  <ion-select name="sielts" [(ngModel)]="sielts" (ionChange)="sielts2($event)">
 		<ion-select-option value="Yes">Yes</ion-select-option>
 		<ion-select-option value="No">No</ion-select-option>
 		<ion-select-option value="Pursuing">Pursuing</ion-select-option>
@@ -150,7 +148,7 @@
 <!---Yes----->		
 	<ion-item *ngIf="showstest">
 	  <ion-label>Test Type <ion-text color="danger">*</ion-text></ion-label>
-	  <ion-select name="stest" (ionChange)="stest2($event)">
+	  <ion-select name="stest" [(ngModel)]="stest" (ionChange)="stest2($event)">
 		<ion-select-option value="ielts">IELTS</ion-select-option>
 		<ion-select-option value="pte">PTE</ion-select-option>
 	  </ion-select>

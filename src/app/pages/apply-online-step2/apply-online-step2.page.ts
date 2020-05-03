@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { LoadingController,AlertController } from '@ionic/angular';
 
 @Component({
@@ -12,23 +11,58 @@ import { LoadingController,AlertController } from '@ionic/angular';
 
 export class ApplyOnlineStep2Page implements OnInit {
 	
- snoid:any;
+ snoid:string;
+ branch_name:string;
+ appointment_date:string;
+ time_select:string;
+ refusals:string;
+ refusalscountry:string;
+ semail:string;
+ marital_status:string;
+ gender:string;
+ svisa:string;
+ scountry:string;
+ ssource:string;
+ squalification:string;
+ spassing:string;
+ last_percentage:string;
+ sielts:string;
+ stest:string;
+ sieltsband:string;
+ sieltsbandnot:string;
+ spteband:string;
+ sptebandnot:string;
+ p_stest:string;
  api:any;
  
-  constructor(
-	private router: Router,
-    private activatedRoute: ActivatedRoute,	
+  constructor(	
 	private http: HttpClient,
+	private router: Router,
+    private activatedRoute: ActivatedRoute,
 	public loadingController: LoadingController,
     public alertController: AlertController
 	) { 
-		this.api="http://localhost/api/apply_online.php?tag=checkingStep2";
+		this.api="http://localhost/api/apply_online2.php";
+		// this.api="http://essglobal.online/ess_crm/wwwApp/apply_online2.php";
 	}
 
   ngOnInit() {
     this.snoid = this.activatedRoute.snapshot.paramMap.get('snoid');
-    console.log(this.snoid);
+    // console.log(this.snoid);
   }
+  
+  public items_date: Array<{ from_date:string}> = [];
+  ngOnInit() {
+    let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), };
+    this.http.get('http://localhost/api/get_value.php?tag=get_appointment_date', httpOptions).subscribe((data: any) => {
+      for (let i = 0; i < data.length; i++) {
+       
+        this.items_date.push({
+          from_date: data[i].from_date          
+        });
+      }
+    });
+  }  
 
   showref:boolean=false;
   refusal(event){
@@ -79,9 +113,6 @@ export class ApplyOnlineStep2Page implements OnInit {
     }
   }
   
-  
-  yesIelts:boolean=false;
-  yesPte:boolean=false;
   stest2(event){
     let val4=event.detail.value;
     if(val4=='ielts'){
@@ -109,30 +140,42 @@ export class ApplyOnlineStep2Page implements OnInit {
       message: 'Please wait...',
       translucent: true,
       cssClass: 'custom-class custom-loading',
-      id:'apply-online'
+      id:'apply-online-step2'
     });
     return await loading.present();
     const { role, data } = await loading.onDidDismiss();
 
     // console.log('Loading dismissed!');
+  }  
+    
+  dateAppointment(event) {
+	let date_val = event.detail.value;
+	this.presentLoadingWithOptions();
+	let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), };
+	this.http.post("http://localhost/api/get_value.php?tag=get_appointment_time", { "appointment_date": date_val}, httpOptions).subscribe((data: any) => {
+      console.log(data);
+    });
   }
   
-  step2query(snoid) {
-    // this.router.navigate(['/apply-online-step2',{"id":1,"name":"anshu"}]);
-    console.log("me");
-    console.log(this.snoid);
+  step2query() {
+	let idno = this.snoid;
+	
+    // console.log(idno);
+    // console.log(branch_name);
+	
     this.presentLoadingWithOptions();
     let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), };   
-    this.http.post(this.api, { "snoid": snoid}, httpOptions).subscribe((data: any) => {
-      console.log(data);
-      // if (data['0']['checkRslt'] == 500) {
-		  // let msg='Please Complete All Fields';
-		  // this.Step2Alert(msg);
-      // } else {
-		// let snoid = data['0']['checkRslt'];
-		// this.loadingController.dismiss('apply-online');  
-        // this.router.navigate(['/apply-online-step2',{"snoid":snoid}]);
-      // }
+    this.http.post(this.api, { "snoid": idno, "branch": this.branch_name, "appointment_date": this.appointment_date, "time_select": this.time_select, "refusals": this.refusals, "refusalscountry": this.refusalscountry, "semail": this.semail, "marital_status": this.marital_status, "gender": this.gender, "svisa": this.svisa, "scountry": this.scountry, "ssource": this.ssource, "squalification": this.squalification, "spassing": this.spassing, "last_percentage": this.last_percentage, "sielts": this.sielts, "stest": this.stest, "sieltsband": this.sieltsband, "sieltsbandnot": this.sieltsbandnot, "spteband": this.spteband, "sptebandnot": this.sptebandnot, "p_stest": this.p_stest}, httpOptions).subscribe((data: any) => {
+      // console.log(data);
+      if (data['status'] == 500) {
+		  let msg=data['msg'];
+		  this.Step2Alert(msg);
+      } else {
+		let snoid = data['status'];
+		this.loadingController.dismiss('apply-online');  
+		this.loadingController.dismiss('apply-online-step2');  
+        this.router.navigate(['/counselor-list',{"snoid":snoid}]);
+      }
     });
   }
   

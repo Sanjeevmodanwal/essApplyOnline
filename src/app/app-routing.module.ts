@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'apply-online-step2',
     loadChildren: () => import('./pages/apply-online-step2/apply-online-step2.module').then( m => m.ApplyOnlineStep2PageModule)
+  },
+  {
+    path: 'counselor-list',
+    loadChildren: () => import('./pages/counselor-list/counselor-list.module').then( m => m.CounselorListPageModule)
   }
 ];
 

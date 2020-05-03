@@ -3,19 +3,117 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
+    <ion-title>ESS Global</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-grid style="background: url(../assets/images/crona_bg.jpg) 0 0/100% 100% no-repeat">
+  <ion-row class="" justify-content-left>
+    <ion-col class="ion-padding"><h3 class="headingBlack" style="font-weight: 700; color: #0b3042">Novel Coronavirus</h3>
 
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+	<ion-text color="primary" style="font-weight: 700; color: #0b3042">             
+		<h4 class="main_heading2">(Covid-19)</h4>
+	</ion-text>
+	<ion-text color="danger">
+		<h3 color="warning">Attention <br>
+		<span style="  line-height:5px;">__</span></h3>
+	</ion-text>
+
+	<ion-text>
+	<p style="font-size: 14px; line-height:24px;">In this moment of the COVID-19 (coronavirus) crisis, we want to keep everyone safe and healthy. ESS Global values your dreams and is working to fulfill them.
+	We've launched an Online Process for your Study Abroad dream. 
+	Stay at Home &amp; Fulfill&nbsp;your study abroad dreams.
+	</p>
+	<ion-button (click)="applystep1url()"  color="light" style="border: 2px solid #095980;color: #0085c4;border-radius: 5px;font-weight: 700;">Click Here to Apply Online Now</ion-button>
+	</ion-text>
+	
+	</ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-grid>
+    <ion-row>
+    <ion-col class="ion-padding">
+	<ion-text>
+	  <h3  style=" font-weight: 700; color: #0b3042">About Us</h3>
+	  <h4>Face Behind Our Success</h4>
+	  <h5 style="color: #0086ca">We provide universal access to the world’s best immigration.</h5>
+	  <p style="font-size: 14px; line-height:24px;">ESS Global Pvt. Ltd. has worked hard with integrity and transparency since 2001 to build a reputation of being most trusted and most recognized education consultancy. we are a team of passionate, dedicated and experienced who work to realise the dreams of aspiring candidates with innovation, optimism and professionalism.
+
+	Highly reputed for our deep, credible and supportive facilitation for students’ overseas education, we have set highest benchmarks in tune with global competencies. but above all, we cherish our values of clarity, reliability and responsibility towards our clients.</p>
+	</ion-text>
+
+    </ion-col>
+	</ion-row>
+</ion-grid>
+
+
+<ion-grid>
+  <ion-row>
+  <ion-col class="ion-padding">
+	<ion-text>
+	<h3  style=" font-weight: 700; color: #0b3042">Testimonial</h3>
+	<h4>People Who Trust Us</h4>
+	</ion-text>
+  </ion-col>
+    <ion-col  class="padding"size-xs="12" size-lg="4"  size-sm="6">
+	<ion-slides [options]="slideOptsOne" pager="true">
+
+  <ion-slide style=" border:2px solid #0085C4 ; padding: 20px 0px;" >
+<ion-row>
+     <ion-col size="4"> <img src="../assets/images/Navdeep-Kaur-168x168.jpeg" style="width:100px;margin:0px 20px ; border:2px solid #333"></ion-col><ion-col size="8">
+   <ion-text >
+    <h2 align="left" style=" margin-left:20px">Navdeep Kaur </h2>
+    <p align="left" style=" margin-left:20px"> UK Study Visa</p>
+ </ion-text> 
+</ion-col>
+<ion-col size="12">
+ <ion-text>
+   
+    <p align="left" style="padding:0px 20px; font-size: 14px; line-height:24px;">A friend of mine, recommended me ESS Global when I shared my dream of studying abroad. Considering his reference, I booked an appointment with their team. The skilled and expert counsellors understood my plans and helped me apply accordingly.</p>
+ </ion-text>
+ </ion-col>
+</ion-row>
+  </ion-slide>
+
+    <ion-slide style=" border:2px solid #0085C4 ; padding: 20px 0px;" ><ion-row>
+     <ion-col size="4"> <img src="../assets/images/Neha-bhandari-168x168.jpg" style="width:100px;margin:0px 20px ; border:2px solid #333"></ion-col><ion-col size="8">
+   <ion-text >
+    <h2 align="left" style=" margin-left:20px">Neha Bhandari </h2>
+    <p align="left" style=" margin-left:20px"> Canada Study Visa</p>
+ </ion-text> 
+</ion-col>
+<ion-col size="12">
+ <ion-text>
+   
+    <p align="left" style="padding:0px 20px; font-size: 14px; line-height:24px;">Not only ESS team and their experts helped me achieve my dream of studying abroad, but they created this environment of comfort and trust, which helped me with everything required to get my study visa for Canada. Thank you, ESS for fulfilling my dream.</p>
+ </ion-text>
+ </ion-col>
+</ion-row>
+  </ion-slide>
+
+  <ion-slide style=" border:2px solid #0085C4 ; padding: 20px 0px;" >
+    <ion-row>
+     <ion-col size="4"> <img src="../assets/images/Navjot-kaur-168x168.jpg" style="width:100px;margin:0px 20px ; border:2px solid #333"></ion-col><ion-col size="8">
+   <ion-text >
+    <h2 align="left" style=" margin-left:20px">Navjot kaur</h2>
+    <p align="left" style=" margin-left:20px"> Canada Study Visa</p>
+ </ion-text> 
+</ion-col>
+<ion-col size="12">
+ <ion-text>
+   
+    <p align="left" style="padding:0px 20px; font-size: 14px; line-height:24px;">Studying abroad is such an easy task for the ESS team that it was unbelievable. They helped me with the process and made it simpler for me to decide. Now I am flying to Canada in a month. Thank you to ESS and Mr. Rohit Sethi for the support and help.</p>
+ </ion-text>
+ </ion-col>
+</ion-row>
+  </ion-slide>
+
+</ion-slides>
+      
+
+
+        </ion-col></ion-row></ion-grid>
+
 </ion-content>
