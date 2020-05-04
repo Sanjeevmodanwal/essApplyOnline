@@ -46,14 +46,12 @@ export class ApplyOnlineStep2Page implements OnInit {
 		// this.api="http://essglobal.online/ess_crm/wwwApp/apply_online2.php";
 	}
 
+  public items_date: Array<{ from_date:string}> = [];
   ngOnInit() {
     this.snoid = this.activatedRoute.snapshot.paramMap.get('snoid');
     // console.log(this.snoid);
-  }
-  
-  public items_date: Array<{ from_date:string}> = [];
-  ngOnInit() {
-    let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), };
+	
+	let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), };
     this.http.get('http://localhost/api/get_value.php?tag=get_appointment_date', httpOptions).subscribe((data: any) => {
       for (let i = 0; i < data.length; i++) {
        
@@ -62,7 +60,8 @@ export class ApplyOnlineStep2Page implements OnInit {
         });
       }
     });
-  }  
+	
+  }
 
   showref:boolean=false;
   refusal(event){
