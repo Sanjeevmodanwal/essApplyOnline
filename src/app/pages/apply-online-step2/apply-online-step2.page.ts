@@ -42,17 +42,19 @@ export class ApplyOnlineStep2Page implements OnInit {
 	public loadingController: LoadingController,
     public alertController: AlertController
 	) { 
-		this.api="http://localhost/api/apply_online2.php";
-		// this.api="http://essglobal.online/ess_crm/wwwApp/apply_online2.php";
+		// this.api="http://localhost/api/apply_online2.php";
+		this.api="http://essglobal.online/ess_crm/wwwApp/apply_online2.php";
 	}
 
   public items_date: Array<{ from_date:string}> = [];
+  public items_time: Array<{ from_time:string}> = [];
   ngOnInit() {
     this.snoid = this.activatedRoute.snapshot.paramMap.get('snoid');
     // console.log(this.snoid);
 	
 	let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), };
-    this.http.get('http://localhost/api/get_value.php?tag=get_appointment_date', httpOptions).subscribe((data: any) => {
+    // this.http.get('http://localhost/api/get_value.php?tag=get_appointment_date', httpOptions).subscribe((data: any) => {
+    this.http.get('http://essglobal.online/ess_crm/wwwApp/get_value.php?tag=get_appointment_date', httpOptions).subscribe((data: any) => {
       for (let i = 0; i < data.length; i++) {
        
         this.items_date.push({
@@ -146,13 +148,20 @@ export class ApplyOnlineStep2Page implements OnInit {
 
     // console.log('Loading dismissed!');
   }  
-    
+   
+ 
   dateAppointment(event) {
 	let date_val = event.detail.value;
 	this.presentLoadingWithOptions();
 	let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), };
-	this.http.post("http://localhost/api/get_value.php?tag=get_appointment_time", { "appointment_date": date_val}, httpOptions).subscribe((data: any) => {
-      console.log(data);
+	// this.http.post("http://localhost/api/get_value.php?tag=get_appointment_time", { "appointment_date": date_val}, httpOptions).subscribe((data: any) => {
+	this.http.post("http://essglobal.online/ess_crm/wwwApp/get_value.php?tag=get_appointment_time", { "appointment_date": date_val}, httpOptions).subscribe((data: any) => {
+      this.items_time=[];
+	  for (let i = 0; i < data.length; i++) {
+        this.items_time.push({
+          from_time: data[i].total_time          
+        });
+      }
     });
   }
   

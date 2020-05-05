@@ -21,8 +21,8 @@ export class ApplyOnlinePage implements OnInit {
 	public loadingController: LoadingController,
     public alertController: AlertController
   ) {
-	this.api="http://localhost/api/apply_online.php";
-	// this.api="http://essglobal.online/ess_crm/wwwApp/apply_online.php";
+	// this.api="http://localhost/api/apply_online.php";
+	this.api="http://essglobal.online/ess_crm/wwwApp/apply_online.php";
 	}
 
   ngOnInit() {

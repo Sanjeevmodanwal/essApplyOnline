@@ -1,9 +1,23 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>counselor_list</ion-title>
+<ion-header translucent>
+  <ion-toolbar>	
+	<ion-buttons slot="start">
+      <ion-back-button  defaultHref="/folder/Inbox"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Appointment Fixed</ion-title>	
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content [fullscreen]="true">
+<ion-grid>
+  <ion-row>
+    <ion-col class="padding" size="12">	
+		<div *ngFor="let appointList of appointLists">
+		<h3 class="headingBlack" style="background: url(../assets/images/heading-border-black.png) center bottom no-repeat">{{appointList.branch_name}} Team </h3>
+		<ion-text>
+		<p style="text-align: center; line-height: 24px; font-size: 14px;">Thank you for submitting your details for the Study Abroad Process with ESS Global. Our team members from the {{appointList.branch_name}} branch will contact you on <span style="color: green;font-weight: bold;">(Date: {{appointList.online_appointed_date}}, Time: {{appointList.online_apointed_time}})</span> to assess your profile and start the process. For any other support, you can always contact us at 90419-90419.</p>
+		</ion-text>		
+		</div>	
+    </ion-col>	
+  </ion-row>
+</ion-grid>
 </ion-content>
